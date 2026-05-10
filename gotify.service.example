@@ -1,0 +1,14 @@
+[Unit]
+Description=Gotify notifications client
+After=network-online.target
+
+[Service]
+ExecStartPre=/bin/sleep 5
+ExecStart=/usr/bin/python3 /home/usuario/scripts/gotify_notify/gotify_notify.py
+Restart=on-failure
+RestartSec=5
+Environment=DISPLAY=:0
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+
+[Install]
+WantedBy=default.target
